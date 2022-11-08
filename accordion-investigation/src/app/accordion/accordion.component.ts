@@ -7,7 +7,8 @@ import { AccordionItem } from './accordion-item.model';
     <div>
       <accordion-panel 
         *ngFor="let item of items"
-        [item]="item">
+        [item]="item"
+        (expanded)="onExpanded($event)">
       </accordion-panel>
 
     </div>
@@ -21,6 +22,13 @@ export class AccordionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+  onExpanded(expandedItem:AccordionItem) {
+    this.items.forEach(item => {
+      if (item != expandedItem) {
+        item.expanded = false;
+      }
+    })
   }
 
 }

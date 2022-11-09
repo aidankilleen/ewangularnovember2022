@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserHttpService } from './user-http.service';
 import { User } from './user.model';
 import { UserService } from './user.service';
 
@@ -32,7 +33,7 @@ import { UserService } from './user.service';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userService.getUsers()">
+        <tr *ngFor="let user of users">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
@@ -57,13 +58,19 @@ import { UserService } from './user.service';
   `,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'user edit investigation';
   showDialog = false;
   showEditDialog = false;
   editingUser = new User();
+  users: User[] = [];
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, 
+             public userHttpService: UserHttpService) {
+  }
+  ngOnInit(): void {
+    this.userHttpService.getUsers()
+      .subscribe((users:User[])=>this.users = users);
   }
 
   onShowEditDialog(userToEdit: User) {
@@ -77,7 +84,10 @@ export class AppComponent {
 
   onAddUser() {
     let newUser = new User(99, "new user", "new@gmail.com", false);
-    this.userService.addUser(newUser);
+    this.userHttpService.addUser(newUser)
+      .subscribe((addedUser:User) => {
+        this.users.push(addedUser);
+      })
   }
 
   onChangeUser(changedUser: User) {
@@ -91,17 +101,30 @@ export class AppComponent {
   }
 
   onDeleteUser(id: number) {
-    //alert(`delete ${id}`);
-    this.userService.deleteUser(id);
+    this.userHttpService.deleteUser(id)
+      .subscribe(()=>{
+        let index = this.users.findIndex(user => user.id == id);
+        this.users.splice(index, 1);
+      })
   }
 
   onSave(newUser: User) {
-    this.userService.addUser(newUser);
+    this.userHttpService.addUser(newUser)
+      .subscribe((addedUser: User) => {
+        this.users.push(addedUser);
+      });
+
+
+
     this.showDialog = false;
   }
 
   onUpdate(userToUpdate: User) {
-    this.userService.updateUser(userToUpdate);
+    this.userHttpService.updateUser(userToUpdate)
+      .subscribe(()=>{
+        let index = this.users.findIndex(user => user.id == userToUpdate.id);
+        this.users.splice(index, 1, userToUpdate);
+      });
     this.showEditDialog = false;
   }
 }

@@ -79,6 +79,7 @@ export class AppComponent implements OnInit {
         alert(JSON.stringify(user));
       })
   }
+  
   onConfirmDelete(id: number) {
     if (confirm("Are you sure?")) {
       this.userService.deleteUser(id)

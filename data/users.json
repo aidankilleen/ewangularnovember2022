@@ -1,18 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Alice",
-      "email": "alice@gmail.com",
-      "active": true
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "email": "bob@gmail.com",
-      "active": true
-    },
-    {
       "id": 3,
       "name": "Carol",
       "email": "carol@gmail.com",
@@ -20,20 +8,14 @@
     },
     {
       "id": 4,
-      "name": "Dan",
+      "name": "Danny",
       "email": "dan@gmail.com",
       "active": false
     },
     {
-      "id": 5,
-      "name": "Eve",
-      "email": "eve@gmail.com",
-      "active": true
-    },
-    {
-      "id": 6,
-      "name": "NU",
-      "email": "nu@gmail.com",
+      "id": -1,
+      "name": "Zoe",
+      "email": "zoe@gmail.com",
       "active": true
     }
   ]

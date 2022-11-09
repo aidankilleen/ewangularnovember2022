@@ -1,10 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserHttpService } from './user-http.service';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-root',
   template: `
     <h1>{{ title | titlecase }}</h1>
+
+    <button (click)="onAddUser()">Add User</button>
+
+    <table>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td><button (click)="onConfirmDelete(user.id)">x</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+<!--
     <button (click)="onClick()">Make Ajax Call</button>
 
   <table>
@@ -25,6 +40,7 @@ import { HttpClient } from '@angular/common/http';
       </tr>
     </tbody>
   </table>
+-->
   `,
   styleUrls: ['./app.component.css']
 })
@@ -32,14 +48,45 @@ export class AppComponent implements OnInit {
   title = 'ajax investigation';
   stations: any[] = [];
 
-  constructor(private httpClient: HttpClient) {
+  users: User[] = [];
+
+
+  constructor(private httpClient: HttpClient, 
+              private userService: UserHttpService) {
 
   }
   ngOnInit(): void {
     this.onClick();
   }
 
+  onAddUser() {
+
+    let newUser = new User(0, "NU", "nu@gmail.com", true);
+
+    this.userService.addUser(newUser)
+      .subscribe((addedUser:User) => {
+        this.users.push(addedUser);
+      });
+
+
+
+  }
+  onConfirmDelete(id: number) {
+    if (confirm("Are you sure?")) {
+      this.userService.deleteUser(id)
+        .subscribe(()=>{
+          //remove this user from the users array
+          let index = this.users.findIndex(user => user.id == id);
+          this.users.splice(index, 1);
+        });
+    }
+  }
   onClick() {
+
+    this.userService.getUsers()
+      .subscribe((data: User[])=> {
+        this.users = data;
+      })
 
     // Original asynchronous call
     // callbacks
@@ -50,13 +97,14 @@ export class AppComponent implements OnInit {
     //.then(()=>alert("fetch has returned"));
 
     // Observable
+    /*
     this.httpClient.get("http://api.citybik.es/v2/networks/cork")
       .subscribe((data: any) => {
         
         this.stations = data.network.stations;
       }
     );
-
+      */
 
 
   }

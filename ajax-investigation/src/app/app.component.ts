@@ -14,7 +14,11 @@ import { User } from './user.model';
       <tbody>
         <tr *ngFor="let user of users">
           <td>{{ user.name }}</td>
-          <td><button (click)="onConfirmDelete(user.id)">x</button></td>
+          <td>
+            <button (click)="onConfirmDelete(user.id)">x</button>
+            <button (click)="onUpdate(user)">edit</button>
+            <button (click)="onGet(user.id)">get</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -67,9 +71,13 @@ export class AppComponent implements OnInit {
       .subscribe((addedUser:User) => {
         this.users.push(addedUser);
       });
+  }
+  onGet(id: number) {
 
-
-
+    this.userService.getUser(id)
+      .subscribe((user: User) => {
+        alert(JSON.stringify(user));
+      })
   }
   onConfirmDelete(id: number) {
     if (confirm("Are you sure?")) {
@@ -81,6 +89,22 @@ export class AppComponent implements OnInit {
         });
     }
   }
+  onUpdate(user: User) {
+
+    let userToUpdate = new User(user.id);
+
+    userToUpdate.name = "CHANGED";
+    userToUpdate.email = "changed@gmail.com";
+    userToUpdate.active = !userToUpdate.active;
+
+    this.userService.updateUser(userToUpdate)
+      .subscribe(()=>{
+        let index = this.users.findIndex(user => user.id == userToUpdate.id);
+        this.users.splice(index, 1, userToUpdate);
+
+      });
+  }
+
   onClick() {
 
     this.userService.getUsers()

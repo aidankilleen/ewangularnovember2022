@@ -9,11 +9,16 @@ import { Observable } from 'rxjs';
 export class UserHttpService {
 
   url: string = "http://localhost:3000/users";
+  headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private httpClient: HttpClient) { 
 
   }
 
+  getUser(id: number): Observable<User> {
+    return this.httpClient.get<User>(`${this.url}/${id}`);
+  }
+  
   getUsers():Observable<User[]> {
     return this.httpClient.get<User[]>(this.url);
   }
@@ -23,12 +28,21 @@ export class UserHttpService {
   }
 
   addUser(userToAdd: User):Observable<User> {
-    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     
     return this.httpClient.post<User>(
         this.url, 
         JSON.stringify(userToAdd), 
-        { headers });
+        { headers:this.headers });
 
+  }
+  updateUser(user: User) {
+
+    let userToUpdate = new User(user.id, user.name, user.email, user.active);
+
+    return this.httpClient.put(
+      `${this.url}/${userToUpdate.id}`, 
+      JSON.stringify(userToUpdate), 
+      { headers: this.headers});
+    
   }
 }

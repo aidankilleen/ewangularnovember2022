@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .Site-content {
+    flex: 1;
+  }

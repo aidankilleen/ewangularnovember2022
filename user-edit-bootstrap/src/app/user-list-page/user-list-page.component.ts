@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DefaultIterableDiffer, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserHttpService } from '../user-http.service';
 import { User } from '../user.model';
@@ -30,8 +30,15 @@ import { User } from '../user.model';
           <td>{{ user.email }}</td>
           <td>{{ user.active ? "Active" : "Inactive" }}</td>
           <td>
-            <button (click)="showConfirmModal(confirmDialog, user)" class="btn btn-danger btn-sm">
+            <button 
+              (click)="showConfirmModal(confirmDialog, user)" 
+              class="btn btn-danger btn-sm">
               <i class="fa fa-times"></i>
+            </button>
+            <button class="btn btn-warning btn-sm"
+              (click)="onEditUserDialog(userDialog, user)"
+            >
+              <i class="fa fa-pencil"></i>
             </button>
           </td>
         </tr>
@@ -102,6 +109,15 @@ import { User } from '../user.model';
       </div>
     </ng-template>
 
+    <ngb-toast 
+      *ngIf="showToast" 
+      [autohide]="false"
+      class="text-bg-danger"
+      header="Information"
+      (hidden)="showToast = false">
+      {{ toastMessage }}
+    </ngb-toast>
+
 
   `,
   styleUrls: ['./user-list-page.component.css']
@@ -110,6 +126,9 @@ export class UserListPageComponent implements OnInit {
 
   users: User[];
   editingUser: User = new User();
+
+  showToast = false;
+  toastMessage = "This is a toast";
 
   confirmDialogMessage = "Are you sure?";
 
@@ -122,6 +141,22 @@ export class UserListPageComponent implements OnInit {
       .subscribe((users: User[]) => {
         this.users = users;
       });
+  }
+  onEditUserDialog(content: any, user:User) {
+    this.editingUser =new User (user.id, user.name, user.email, user.active);
+    this.modalService.open(content)
+      .result.then(
+        () => {
+          this.userService.updateUser(this.editingUser)
+            .subscribe(()=> {
+              let index = this.users.findIndex(user => user.id == this.editingUser.id);
+              this.users.splice(index, 1, this.editingUser);
+            })
+        }, 
+        () => {
+          //alert("cancel")
+        }
+      );
   }
   onShowUserDialog(content: any) {
     this.modalService.open(content)
@@ -145,6 +180,8 @@ export class UserListPageComponent implements OnInit {
             .subscribe(() => {
               let index = this.users.findIndex(user => user.id == userToDelete.id);
               this.users.splice(index, 1);
+              this.showToast = true;
+              this.toastMessage = `User ${userToDelete.id} deleted.`;
             });
         },
         (reason) => {
@@ -153,12 +190,17 @@ export class UserListPageComponent implements OnInit {
         })
   }
   onConfirmDelete(userToDelete: User) {
-
+    alert("delete");
+    console.log("onConfirmDelete");
     if (confirm(`are you sure you want to delete ${userToDelete.name}?`)) {
       this.userService.deleteUser(userToDelete.id)
         .subscribe(() => {
           let index = this.users.findIndex(user => user.id == userToDelete.id);
           this.users.splice(index, 1);
+          this.showToast = true;
+          this.toastMessage = `User ${userToDelete.id} deleted`;
+          console.log("deleted");
+          alert("deleted");
         });
     }
   }

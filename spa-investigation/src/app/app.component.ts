@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <h1>{{ title | titlecase }}</h1>
 
+    <i class="fa fa-users fa-5x"></i>
+
     <nav>
       <a routerLink="/home">Home</a> |
       <a routerLink="/about">About Us</a> |

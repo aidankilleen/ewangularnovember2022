@@ -4,6 +4,6 @@
     flex-direction: column;
   }
 
-  main, .Site-content {
+  main {
     flex: 1;
   }

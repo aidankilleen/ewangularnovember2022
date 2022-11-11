@@ -6,13 +6,14 @@ import { Record } from './record.model';
   selector: 'app-root',
   template: `
     <h1>{{ title | titlecase }}</h1>
-<!--
-    <pt-datagrid [records]="records">
+
+    <pt-datagrid [records]="records" field="name">
 
     </pt-datagrid>
--->
+
     <hr>
-    {{ records | json }}
+    
+
   `,
   styleUrls: ['./app.component.css']
 })

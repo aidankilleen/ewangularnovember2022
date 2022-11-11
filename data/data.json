@@ -45,8 +45,8 @@
   ], 
 
   "records": [
-      { "id":1, "name":"Alice", "colour":"orange", "quantity":1},
-      { "id":2, "name":"Bob", "colour":"green", "quantity":50},
+      { "id":1, "name":"Fred", "colour":"yellow", "quantity":1},
+      { "id":2, "name":"Bob", "colour":"pink", "quantity":50},
       { "id":3, "name":"Carol", "colour":"green", "quantity":47},
       { "id":4, "name":"Dan", "colour":"blue", "quantity":23},
       { "id":5, "name":"Alice", "colour":"orange", "quantity":100},

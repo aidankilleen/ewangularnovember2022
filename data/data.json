@@ -41,61 +41,314 @@
       "name": "Harriet",
       "email": "harriet@gmail.com",
       "active": true
+    },
+    {
+      "name": "New User",
+      "email": "new.user@gmail.com",
+      "active": true,
+      "id": 8
     }
-  ], 
-
+  ],
   "records": [
-      { "id":1, "name":"Fred", "colour":"yellow", "quantity":1},
-      { "id":2, "name":"Bob", "colour":"pink", "quantity":50},
-      { "id":3, "name":"Carol", "colour":"green", "quantity":47},
-      { "id":4, "name":"Dan", "colour":"blue", "quantity":23},
-      { "id":5, "name":"Alice", "colour":"orange", "quantity":100},
-      { "id":6, "name":"Bob", "colour":"blue", "quantity":50},
-      { "id":7, "name":"Carol", "colour":"green", "quantity":47},
-      { "id":8, "name":"Dan", "colour":"blue", "quantity":23},
-      { "id":9, "name":"Alice", "colour":"red", "quantity":87},
-      { "id":10, "name":"Bob", "colour":"blue", "quantity":62},
-      { "id":11, "name":"Carol", "colour":"orange", "quantity":21},
-      { "id":12, "name":"Dan", "colour":"blue", "quantity":45},
-      { "id":13, "name":"Carol", "colour":"green", "quantity":47},
-      { "id":14, "name":"Dan", "colour":"blue", "quantity":23},
-      { "id":15, "name":"Alice", "colour":"red", "quantity":100},
-      { "id":16, "name":"Bob", "colour":"blue", "quantity":50},
-      { "id":17, "name":"Carol", "colour":"green", "quantity":47},
-      { "id":18, "name":"Dan", "colour":"blue", "quantity":23},
-      { "id":19, "name":"Alice", "colour":"red", "quantity":57},
-      { "id":20, "name":"Bob", "colour":"blue", "quantity":66},
-      { "id":21, "name":"Carol", "colour":"orange", "quantity":81},
-      { "id":22, "name":"Dan", "colour":"blue", "quantity":16},
-      { "id":23, "name":"Dan", "colour":"green", "quantity":51},
-      { "id":24, "name":"Dan", "colour":"green", "quantity":14},
-      { "id":25, "name":"Dan", "colour":"red", "quantity":31},
-      { "id":26, "name":"Bob", "colour":"blue", "quantity":50},
-      { "id":27, "name":"Alice", "colour":"green", "quantity":87},
-      { "id":28, "name":"Dan", "colour":"blue", "quantity":3},
-      { "id":29, "name":"Alice", "colour":"red", "quantity":17},
-      { "id":30, "name":"Alice", "colour":"blue", "quantity":56},
-      { "id":31, "name":"Carol", "colour":"orange", "quantity":51},
-      { "id":32, "name":"Dan", "colour":"blue", "quantity":56},
-      { "id":33, "name":"Dan", "colour":"green", "quantity":51},
-      { "id":34, "name":"Dan", "colour":"green", "quantity":54},
-      { "id":35, "name":"Dan", "colour":"red", "quantity":51},
-      { "id":36, "name":"Bob", "colour":"red", "quantity":50},
-      { "id":37, "name":"Bob", "colour":"red", "quantity":57},
-      { "id":38, "name":"Bob", "colour":"blue", "quantity":53},
-      { "id":39, "name":"Bob", "colour":"green", "quantity":57},
-      { "id":40, "name":"Alice", "colour":"green", "quantity":16},
-      { "id":41, "name":"Carol", "colour":"orange", "quantity":11},
-      { "id":42, "name":"Eve", "colour":"blue", "quantity":16},
-      { "id":43, "name":"Eve", "colour":"green", "quantity":11},
-      { "id":44, "name":"Carol", "colour":"green", "quantity":14},
-      { "id":45, "name":"Carol", "colour":"red", "quantity":11},
-      { "id":46, "name":"Alice", "colour":"red", "quantity":10},
-      { "id":47, "name":"Alice", "colour":"red", "quantity":17},
-      { "id":48, "name":"Bob", "colour":"blue", "quantity":13},
-      { "id":49, "name":"Bob", "colour":"green", "quantity":17},
-      { "id":50, "name":"Alice", "colour":"green", "quantity":16}
+    {
+      "id": 1,
+      "name": "Fred",
+      "colour": "yellow",
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "colour": "pink",
+      "quantity": 50
+    },
+    {
+      "id": 3,
+      "name": "Carol",
+      "colour": "green",
+      "quantity": 47
+    },
+    {
+      "id": 4,
+      "name": "Dan",
+      "colour": "blue",
+      "quantity": 23
+    },
+    {
+      "id": 5,
+      "name": "Alice",
+      "colour": "orange",
+      "quantity": 100
+    },
+    {
+      "id": 6,
+      "name": "Bob",
+      "colour": "blue",
+      "quantity": 50
+    },
+    {
+      "id": 7,
+      "name": "Carol",
+      "colour": "green",
+      "quantity": 47
+    },
+    {
+      "id": 8,
+      "name": "Dan",
+      "colour": "blue",
+      "quantity": 23
+    },
+    {
+      "id": 9,
+      "name": "Alice",
+      "colour": "red",
+      "quantity": 87
+    },
+    {
+      "id": 10,
+      "name": "Bob",
+      "colour": "blue",
+      "quantity": 62
+    },
+    {
+      "id": 11,
+      "name": "Carol",
+      "colour": "orange",
+      "quantity": 21
+    },
+    {
+      "id": 12,
+      "name": "Dan",
+      "colour": "blue",
+      "quantity": 45
+    },
+    {
+      "id": 13,
+      "name": "Carol",
+      "colour": "green",
+      "quantity": 47
+    },
+    {
+      "id": 14,
+      "name": "Dan",
+      "colour": "blue",
+      "quantity": 23
+    },
+    {
+      "id": 15,
+      "name": "Alice",
+      "colour": "red",
+      "quantity": 100
+    },
+    {
+      "id": 16,
+      "name": "Bob",
+      "colour": "blue",
+      "quantity": 50
+    },
+    {
+      "id": 17,
+      "name": "Carol",
+      "colour": "green",
+      "quantity": 47
+    },
+    {
+      "id": 18,
+      "name": "Dan",
+      "colour": "blue",
+      "quantity": 23
+    },
+    {
+      "id": 19,
+      "name": "Alice",
+      "colour": "red",
+      "quantity": 57
+    },
+    {
+      "id": 20,
+      "name": "Bob",
+      "colour": "blue",
+      "quantity": 66
+    },
+    {
+      "id": 21,
+      "name": "Carol",
+      "colour": "orange",
+      "quantity": 81
+    },
+    {
+      "id": 22,
+      "name": "Dan",
+      "colour": "blue",
+      "quantity": 16
+    },
+    {
+      "id": 23,
+      "name": "Dan",
+      "colour": "green",
+      "quantity": 51
+    },
+    {
+      "id": 24,
+      "name": "Dan",
+      "colour": "green",
+      "quantity": 14
+    },
+    {
+      "id": 25,
+      "name": "Dan",
+      "colour": "red",
+      "quantity": 31
+    },
+    {
+      "id": 26,
+      "name": "Bob",
+      "colour": "blue",
+      "quantity": 50
+    },
+    {
+      "id": 27,
+      "name": "Alice",
+      "colour": "green",
+      "quantity": 87
+    },
+    {
+      "id": 28,
+      "name": "Dan",
+      "colour": "blue",
+      "quantity": 3
+    },
+    {
+      "id": 29,
+      "name": "Alice",
+      "colour": "red",
+      "quantity": 17
+    },
+    {
+      "id": 30,
+      "name": "Alice",
+      "colour": "blue",
+      "quantity": 56
+    },
+    {
+      "id": 31,
+      "name": "Carol",
+      "colour": "orange",
+      "quantity": 51
+    },
+    {
+      "id": 32,
+      "name": "Dan",
+      "colour": "blue",
+      "quantity": 56
+    },
+    {
+      "id": 33,
+      "name": "Dan",
+      "colour": "green",
+      "quantity": 51
+    },
+    {
+      "id": 34,
+      "name": "Dan",
+      "colour": "green",
+      "quantity": 54
+    },
+    {
+      "id": 35,
+      "name": "Dan",
+      "colour": "red",
+      "quantity": 51
+    },
+    {
+      "id": 36,
+      "name": "Bob",
+      "colour": "red",
+      "quantity": 50
+    },
+    {
+      "id": 37,
+      "name": "Bob",
+      "colour": "red",
+      "quantity": 57
+    },
+    {
+      "id": 38,
+      "name": "Bob",
+      "colour": "blue",
+      "quantity": 53
+    },
+    {
+      "id": 39,
+      "name": "Bob",
+      "colour": "green",
+      "quantity": 57
+    },
+    {
+      "id": 40,
+      "name": "Alice",
+      "colour": "green",
+      "quantity": 16
+    },
+    {
+      "id": 41,
+      "name": "Carol",
+      "colour": "orange",
+      "quantity": 11
+    },
+    {
+      "id": 42,
+      "name": "Eve",
+      "colour": "blue",
+      "quantity": 16
+    },
+    {
+      "id": 43,
+      "name": "Eve",
+      "colour": "green",
+      "quantity": 11
+    },
+    {
+      "id": 44,
+      "name": "Carol",
+      "colour": "green",
+      "quantity": 14
+    },
+    {
+      "id": 45,
+      "name": "Carol",
+      "colour": "red",
+      "quantity": 11
+    },
+    {
+      "id": 46,
+      "name": "Alice",
+      "colour": "red",
+      "quantity": 10
+    },
+    {
+      "id": 47,
+      "name": "Alice",
+      "colour": "red",
+      "quantity": 17
+    },
+    {
+      "id": 48,
+      "name": "Bob",
+      "colour": "blue",
+      "quantity": 13
+    },
+    {
+      "id": 49,
+      "name": "Bob",
+      "colour": "green",
+      "quantity": 17
+    },
+    {
+      "id": 50,
+      "name": "Alice",
+      "colour": "green",
+      "quantity": 16
+    }
   ]
 }
-
-

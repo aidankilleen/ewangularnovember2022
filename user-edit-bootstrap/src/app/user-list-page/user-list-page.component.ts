@@ -111,7 +111,7 @@ import { User } from '../user.model';
 
     <ngb-toast 
       *ngIf="showToast" 
-      [autohide]="false"
+      [autohide]="true"
       class="text-bg-danger"
       header="Information"
       (hidden)="showToast = false">
